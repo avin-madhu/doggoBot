@@ -6,7 +6,7 @@ const axios = require('axios');
 
 
 
-// facts of dogs
+// list of facts of dogs
 
 var factArray = [
     'Their sense of smell is at least 40x better than ours',
