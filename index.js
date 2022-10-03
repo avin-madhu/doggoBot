@@ -1,12 +1,12 @@
 require('dotenv').config();
 const telegram = require('telegraf');
-const bot = new telegram('5779726813:AAFF5C4TFbizOLj4GE0dUGYxH3bMdBunsL8');
+const keepAlive = require('./server')
+const bot = new telegram(process.env['token_Key']);
 const axios = require('axios');
 
 var factArray = [
     'Their sense of smell is at least 40x better than ours',
     'Some have such good noses they can sniff out medical problems',
-    'A dog’s nose print is unique, much like a person’s fingerprint.',
     ' Rin Tin Tin, the famous German Shepherd, was nominated for an Academy Award.'
     ,'The Bloodhound’s sense of smell is so accurate that the results of its tracking can be used as evidence in a court of law.',
     ' According to the Guinness World Records, the smallest dog ever recorded was Miracle Milly, the Chihuahua. Born in 2011, Milly was a miniscule 3.8 inches tall and weighed in at one pound.',
@@ -17,12 +17,15 @@ var factArray = [
     'A dog’s nose print is unique, much like a human’s fingerprint',
     'The United States has the highest pet dog population in the world. Approximately 75.8 million in fact. ',
     'The Saluki is the world’s oldest dog breed. They appear in ancient Egyptian tombs dating back to 2100 B.C. ',
-    'Scientists believe that the world’s first known dog lived 31,700 years ago. This prehistoric dog resembled a large Siberian Husky.'
+    'Scientists believe that the world’s first known dog lived 31,700 years ago. This prehistoric dog resembled a large Siberian Husky.','Dogs are believed to have a sense to smell out cancer', 'Dogs can undergo depression just like people'
   ];
   
-  var randomNumber = Math.floor(Math.random() * factArray.length);
-bot.hears('give-fact',(ctx)=>{
+ 
+bot.hears('fact',(ctx)=>{
+ var randomNumber = Math.floor(Math.random() * factArray.length);
+console.log(randomNumber);
     ctx.reply(factArray[randomNumber])
+  
 })
 
 
@@ -33,13 +36,13 @@ bot.command('doggo',(ctx)=>{
     let tempMsg = res.data.message;
     let newTempMsg = tempMsg.replace(`"(${tempMsg})"`," ");
     ctx.reply(newTempMsg);
-      console.log(res);
+     
    })
    .catch(e=>{
     console.log(e)
    })
-   console.log(ctx); 
 }) 
+keepAlive()
 
 
 bot.launch();
