@@ -17,6 +17,14 @@ known bug: /calc command.
  * `/fact` - Sends you a random fact about dogs
  
  
- ## Local Development
+ ## Local Development - packages
  
- ``` npm install telegraf@3.32 ```
+ ```
+ npm install telegraf@3.32 
+ ```
+```
+npm install axios
+```
+```
+npm install server
+```
