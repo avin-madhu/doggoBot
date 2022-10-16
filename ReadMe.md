@@ -16,3 +16,7 @@ known bug: /calc command.
  * `/speak` - Send you a bark text
  * `/fact` - Sends you a random fact about dogs
  
+ 
+ ## Local Development
+ 
+ ``` npm install telegraf@3.32 ```
