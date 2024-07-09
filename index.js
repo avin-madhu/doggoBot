@@ -4,7 +4,8 @@ const keepAlive = require('./server')
 const bot = new telegram(process.env['token_Key']);
 const axios = require('axios');
 
-
+app.use(bot.webhookCallback('/telegram-webhook'));
+bot.telegram.setWebhook('https://doggo-bot-mocha.vercel.app/telegram-webhook');
 
 // list of facts of dogs
 
